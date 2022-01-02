@@ -277,11 +277,11 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #Wallpaper
 #exec_always --no-startup-id feh --no-fehbg --bg-scale ~/Pictures/*   
 #exec --no-startup-id  ~/.config/i3/wallpaper.sh &
-exec_always --no-startup-id nitrogen --set-zoom-fill --random /home/waso/Pictures/wallpapers --save
+exec_always --no-startup-id nitrogen --set-zoom-fill --random $HOME/Pictures/wallpaper --save
 # bar {
 #  position top
 #  font pango:DejaVu Sans Mono, MesloLGS NF Regular ,FontAwesome 15
-  #status_command exec /home/waso/.config/i3status/mybar.sh
+  #status_command exec $HOME/.config/i3status/mybar.sh
   # }
 #red# colors {
 #red#   separator #888888
