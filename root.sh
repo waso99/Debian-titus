@@ -19,7 +19,7 @@ apt update
 #apt install papirus-icon-theme lxappearance fonts-noto-color-emoji fonts-firacode fonts-font-awesome libqt5svg5 qml-module-qtquick-controls -y
 
 ##
-apt install unzip picom i3 polybar rofi kitty thunar neofetch sxhkd git lxpolkit lxappearance xorg -y
+apt install unzip picom i3 polybar nitrogen rofi kitty thunar neofetch sxhkd git lxpolkit lxappearance xorg -y
 apt install papirus-icon-theme fonts-noto-color-emoji fonts-firacode fonts-font-awesome libqt5svg5 qml-module-qtquick-controls -y
 
 # Download Nordic Theme
