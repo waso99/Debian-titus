@@ -24,7 +24,8 @@ apt install papirus-icon-theme fonts-noto-color-emoji fonts-firacode fonts-font-
 
 # Download Nordic Theme
 cd /usr/share/themes/
-git clone https://github.com/EliverLara/Nordic.git
+#git clone https://github.com/EliverLara/Nordic.git
+git clone https://github.com/waso99/theme/tree/main/Karitim-Dark-GTK
 
 # Fira Code Nerd Font variant needed
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v1.1.0/FiraCode.zip
