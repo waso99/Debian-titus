@@ -5,10 +5,12 @@
 #Ms-fonts
 sudo apt install ttf-mscorefonts-installer
 
-#wallpaper
+#-------------wallpaper
 mkdir -p $HOME/Pictures/wallpaper
 cd $HOME/Pictures/wallpaper
 git clone https://github.com/waso99/Debian-titus/tree/main/wallpaper
+
+#------------- Neovim setting
 
 mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.config/nvim/autoload
