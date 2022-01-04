@@ -2,8 +2,6 @@
 
 # Appearance pacakges
 
-
-
 #-------------wallpaper
 mkdir -p $HOME/Pictures/wallpaper
 cd $HOME/Pictures/wallpaper
