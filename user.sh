@@ -2,8 +2,7 @@
 
 # Appearance pacakges
 
-#Ms-fonts
-sudo apt install ttf-mscorefonts-installer
+
 
 #-------------wallpaper
 mkdir -p $HOME/Pictures/wallpaper
