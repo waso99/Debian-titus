@@ -29,10 +29,10 @@ apt update
 apt install unzip picom i3 polybar nitrogen rofi kitty terminator thunar neofetch sxhkd git lxpolkit lxappearance xorg -y
 apt install papirus-icon-theme fonts-noto-color-emoji fonts-firacode fonts-font-awesome libqt5svg5 qml-module-qtquick-controls -y
 
-# Download Nordic Theme
+# Download Karitim-Dark-GTK Theme
 cd /usr/share/themes/
 #git clone https://github.com/EliverLara/Nordic.git
-git clone https://github.com/waso99/theme/tree/main/Karitim-Dark-GTK
+git clone https://github.com/waso99/Karitim-Dark-GTK.git
 
 # Fira Code Nerd Font variant needed
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v1.1.0/FiraCode.zip
