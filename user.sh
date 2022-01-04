@@ -25,6 +25,9 @@ wget https://raw.githubusercontent.com/waso99/Neovim/main/.vimrc
 
 nvim .vimrc +PlugInstall +qall
 
+#------------- pureline
+mkdir -p $HOME/pureline
+
 # Layan Cursors
 #mkdir -p $HOME/build
 #cd "$HOME/build"
