@@ -4,8 +4,7 @@
 
 #-------------wallpaper
 mkdir -p $HOME/Pictures/wallpaper
-cd $HOME/Pictures/wallpaper
-git clone https://github.com/waso99/Debian-titus/tree/main/wallpaper
+cp $HOME/Debian-titus/wallpaper/* $HOME/Pictures/wallpaper
 
 #------------- Neovim setting
 
