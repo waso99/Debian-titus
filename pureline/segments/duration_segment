@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# duration_segment
+# show the time spent on the last command excecuted
+
+# Set default symbols if not already defined in config
+# Defaults should be standard symbols.
+[[ -z ${PL_SYMBOLS[duration]}  ]] && PL_SYMBOLS[duration]='⧗'
+
+# -----------------------------------------------------------------------------
+# return the current ime
+function timer_now {
+    date +%s%N
+}
+
+# -----------------------------------------------------------------------------
+# use a debug trap to start the timer on next command
+function timer_start {
+    timer_start=${timer_start:-$(timer_now)}
+}
+trap 'timer_start' DEBUG
+
+# -----------------------------------------------------------------------------
+# stop the timer and format output for duration
+# the stop is triggered by (and called from) the segment when PS1 is built.
+function timer_stop {
+    local delta_us=$((($(timer_now) - timer_start) / 1000))
+    local us=$((delta_us % 1000))
+    local ms=$(((delta_us / 1000) % 1000))
+    local s=$(((delta_us / 1000000) % 60))
+    local m=$(((delta_us / 60000000) % 60))
+    local h=$((delta_us / 3600000000))
+    if   ((h > 0));     then duration=${h}h${m}m
+    elif ((m > 0));     then duration=${m}m${s}s
+    elif ((s >= 10));   then duration=${s}.$((ms / 100))s
+    elif ((s > 0));     then duration=${s}.$(printf %03d $ms)s
+    elif ((ms >= 100)); then duration=${ms}ms
+    elif ((ms > 0));    then duration=${ms}.$((us / 100))ms
+    else duration=${us}us
+    fi
+    unset timer_start
+}
+
+# -----------------------------------------------------------------------------
+# append to prompt: indicator for time spend in the last cmd
+# arg: $1 foreground color
+# arg; $2 background color
+function duration_segment {
+        local bg_color="$1"
+        local fg_color="$2"
+        Last_command=$? && timer_stop
+        # local hourglass_symbol=$'\xE2\x29\xD7'
+        local content=" ${PL_SYMBOLS[duration]} ${duration}"
+        PS1+="$(segment_end "$fg_color" "$bg_color")"
+        PS1+="$(segment_content "$fg_color" "$bg_color" "$content ")"
+        __last_color="$bg_color"
+}
