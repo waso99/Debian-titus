@@ -23,9 +23,6 @@ dpkg -i lsd.deb
 apt update
 
 # Add base packages
-#apt install unzip picom bspwm polybar sddm rofi kitty thunar neovim flameshot neofetch sxhkd git lxpolkit lxappearance xorg -y
-#apt install papirus-icon-theme lxappearance fonts-noto-color-emoji fonts-firacode fonts-font-awesome libqt5svg5 qml-module-qtquick-controls -y
-
 apt install unzip picom i3 polybar nitrogen rofi kitty terminator thunar neovim neofetch sxhkd git lxpolkit lxappearance xorg -y
 apt install ttf-mscorefonts-installer papirus-icon-theme fonts-noto-color-emoji fonts-firacode fonts-font-awesome libqt5svg5 qml-module-qtquick-controls -y
 
@@ -40,6 +37,11 @@ unzip FiraCode.zip -d /usr/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v1.1.0/Meslo.zip
 unzip Meslo.zip -d /usr/share/fonts
 fc-cache -vf
+
+#Autologin (waso)
+mkdir /etc/systemd/system/getty@tty1.service.d
+cd /etc/systemd/system/getty@tty1.service.d
+wget https://raw.githubusercontent.com/waso99/Debian-titus/main/override.conf
 
 cd $builddir
 mkdir -p /home/$username/.config
