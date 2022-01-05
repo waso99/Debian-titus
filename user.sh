@@ -12,14 +12,20 @@ mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.config/nvim/autoload
 cd $HOME/.config/nvim/autoload
 wget https://raw.githubusercontent.com/waso99/Neovim/main/plug.vim
-
 cd $HOME/.config/nvim/
 wget https://raw.githubusercontent.com/waso99/Neovim/main/init.vim
-
 cd $HOME
 wget https://raw.githubusercontent.com/waso99/Neovim/main/.vimrc
-
 nvim .vimrc +PlugInstall +qall
+
+
+#-------------Startx Automatically
+printf "#Startx Automatically
+if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
+ . startx
+ logout
+fi" >> $HOME/.profile
+
 
 #------------- pureline
 mkdir -p $HOME/pureline
