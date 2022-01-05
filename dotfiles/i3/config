@@ -278,6 +278,11 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec_always --no-startup-id feh --no-fehbg --bg-scale ~/Pictures/*   
 #exec --no-startup-id  ~/.config/i3/wallpaper.sh &
 exec_always --no-startup-id nitrogen --set-zoom-fill --random $HOME/Pictures/wallpaper --save
+
+# picom
+exec_always --no-startup-id picom --config ~/.config/picom.conf
+
+
 # bar {
 #  position top
 #  font pango:DejaVu Sans Mono, MesloLGS NF Regular ,FontAwesome 15
@@ -325,6 +330,7 @@ client.urgent #C20000 #C20000 #FFFFFF #FFFFFF
 for_window [class=".*"] title_format "[%title]"
 
 # autostart:
+
 exec nm-applet
 exec nitrogen --restore
 #exec lxpolkit
