@@ -20,8 +20,7 @@ nvim .vimrc +PlugInstall +qall
 
 
 #-------------Startx Automatically
-printf "#Startx Automatically
-if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
+printf "if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
  . startx
  logout
 fi" >> $HOME/.profile
