@@ -1,225 +1,149 @@
-;[module/xbacklight]
-;type = internal/xbacklight
-;format = <ramp><label>
-;label = %percentage%%
-;label-background = ${colors.foreground}
-;label-foreground = ${colors.black}
-;label-padding = 1
-
-;ramp-0 = 
-;ramp-1 = 
-;ramp-2 = 
-
-;ramp-padding = 1
-;ramp-background = ${colors.backlight}
-;ramp-foreground = ${colors.black}
-
-
-;[module/backlight-acpi]
-;inherit = module/xbacklight
-;type = internal/backlight
-;card = intel_backlight
-;enable-scroll = true
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-[module/eth]
-type = internal/network
-
-interface = ${env:Eth:wlo1}
-
-unknown-as-up = true
-
-interval = 3.0
-format-connected = <label-connected>
-format-connected-prefix =  
-format-connected-prefix-background = ${colors.eth}
-format-connected-prefix-foreground = ${colors.black}
-format-connected-prefix-padding = 1
-label-connected = %ifname%
-label-connected-background = ${colors.foreground}
-label-connected-foreground = ${colors.black}
-label-connected-padding = 1
-
-format-disconnected = <label-disconnected>
-format-disconnected-prefix = " "
-format-disconnected-prefix-background = ${colors.eth}
-format-disconnected-prefix-foreground = ${colors.black}
-format-disconnected-prefix-padding = 1
-label-disconnected = Offline
-label-disconnected-background = ${colors.foreground}
-label-disconnected-foreground = ${colors.black}
-label-disconnected-padding = 1
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/i3]
 type = internal/i3
 
-;ws-icon-0 = 1;1
-;ws-icon-1 = 2;2
-;ws-icon-2 = 3;3
-;ws-icon-3 = 4;4
-;ws-icon-4 = 5;5
-;ws-icon-5 = 6;6
-;ws-icon-6 = 7;7
-;ws-icon-7 = 8;8
-;ws-icon-8 = 9;9
-;ws-icon-9 = 10;10
-;ws-icon-default = 
+ws-icon-0 = 1;I
+ws-icon-1 = 2;II
+ws-icon-2 = 3;III
+ws-icon-3 = 4;IV
+ws-icon-4 = 5;V
+ws-icon-5 = 6;VI
+ws-icon-6 = 7;VII
+ws-icon-7 = 8;VIII
+ws-icon-8 = 9;IX
+ws-icon-9 = 10;X
 
-format = <label-state>
+pin-workspaces = true
+format = <label-state> <label-mode>
 index-sort = true
-wrapping-scroll = false
+wrapping-scroll = true
 
-;Only show workspaces on the same output as the bar
-;pin-workspaces = true
-label-mode = %mode%
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.workspace}
+;label-mode = %mode%
+;label-mode-padding = 2
+;label-mode-foreground = ${colors.foreground}
+;label-mode-background = ${colors.background-alt}
 
-label-unfocused = %index%
+;; label-unfocused = %index%
+label-unfocused = " %icon% "
 label-unfocused-padding = 2
-label-unfocused-background = ${colors.foreground}
-label-unfocused-foreground = ${colors.i3}
+label-unfocused-background = ${colors.background-alt}
+label-unfocused-foreground = ${colors.foreground}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-background = ${colors.i3}
+;; label-focused = %index%
+label-focused = " %icon% "
+label-focused-background = ${colors.background-alt}
 label-focused-foreground = ${colors.foreground}
 label-focused-padding = 2
 
 ;urgent = Workspace with urgency hint set
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
+;; label-urgent = %index%
+label-urgent = " %icon% "
+label-urgent-background = ${colors.red}
 label-urgent-foreground = ${colors.black}
 label-urgent-padding = 2
 
-label-visible = %index%
+;; label-visible = %index%
+label-visible = " %icon% "
 label-visible-background = ${colors.foreground}
 label-visible-foreground = ${colors.black}
 label-visible-padding = 2
 
-; Separator in between workspaces
-label-separator = |
-label-separator-foreground = ${colors.black}
-label-seprator-padding = 2
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+ 
+[module/date]
+type = custom/script
+format-prefix = " "
+exec = date +'%a. %d/%b/%Y ~ %H:%M'
+tail = false
+interval = 5
+click-left =  ~/.config/rofi/time.sh &
+format-prefix-background = ${colors.background-alt}
+format-prefix-foreground = ${colors.yellow}
+label-foreground = ${colors.blue}
+label-background = ${colors.background-alt}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/pulseaudio]
-type = internal/pulseaudio
-sink = alsa_output.pci-0000_00_1f.3.analog-stereo
-use-ui-max = false
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format = <label>
+format-background = ${colors.background-alt}
+format-foreground = ${colors.orange}
+format-prefix = 
+label = CPU %percentage:2%%
+;label = %{A1:terminator -bashtop:}CPU %percentage:2%%{A}
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-format-volume = <ramp-volume><label-volume>
+[module/lan]
+type = internal/network
+interface = enp0s3
+;format-connected = 
+;label-connected = " %ifname%: %local_ip% %local_ip6% "
+label-connected =%{A1:~/.config/rofi/network.sh:} %ifname%:%local_ip%%{A}
+label-disconnected = "%ifname%: not connected "
+label-connected-foreground = ${colors.green}
+label-connected-background = ${colors.background-alt}
 
-label-volume = %percentage%%
-label-volume-foreground = ${colors.black}
-label-volume-background = ${colors.foreground}
-label-volume-padding = 1
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-format-muted = <label-muted>
-format-muted-prefix = 婢
-format-muted-prefix-background = ${colors.primary}
-format-muted-prefix-foreground = ${colors.black}
-format-muted-prefix-padding = 1
-label-muted = Muted
-label-muted-foreground = ${colors.black}
-label-muted-background = ${colors.foreground}
-label-muted-padding = 1
-
-
+[module/volume]
+type = internal/alsa
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+master-mixer = Master
+interval = 5
+format-volume = <label-volume> <ramp-volume> <bar-volume>
+format-volume-background = ${colors.background-alt}
+format-muted-prefix = 
+format-muted-prefix-background = ${colors.background-alt}
+label-volume = %percentage:3%%
+label-muted = muted
+;label-muted-margin  = 4
+label-muted-foreground = ${colors.red}
+label-muted-background = ${colors.background-alt}
+;label-muted-margin  = 5
 ramp-volume-0 = 
 ramp-volume-1 = 
-ramp-volume-2 = 墳
-ramp-volume-padding = 1
-ramp-volume-background = ${colors.primary}
-ramp-volume-foreground = ${colors.black}
-
-click-right = exec pavucontrol
+ramp-volume-2 = 
+bar-volume-width = 10
+bar-volume-gradient = false
+bar-volume-indicator = ⏽
+bar-volume-indicator-background = ${colors.background-alt}
+bar-volume-fill = 
+bar-volume-fill-background = ${colors.background-alt}
+bar-volume-empty = 
+bar-volume-empty-background = ${colors.background-alt}
+ramp-headphones-0 = 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-;[module/temperature]
-;type = internal/temperature
-;thermal-zone = 1
-;warn-temperature = 70'
-
-;format = <ramp><label>
-;format-warn = <ramp><label-warn>
-
-;label = %temperature-c%
-;label-background = ${colors.foreground}
-;label-foreground = ${colors.black}
-;label-padding = 1
-;label-warn = %temperature-c%
-;label-warn-background = ${colors.alert}
-;label-warn-foreground = ${colors.black}
-;label-warn-padding = 1
-
-;ramp-0 = 
-;ramp-1 = 
-;ramp-2 = 
-;ramp-3 = 
-;ramp-4 = 
-;ramp-foreground = ${colors.black}
-;ramp-background = ${colors.temperature}
-;ramp-padding = 1
+[module/now-playing]
+type = custom/script
+tail = true
+format-prefix = %{T5}" "%{T-}
+format-prefix-background = ${colors.background-alt}
+format-prefix-foreground = ${colors.foreground}
+format = <label>
+format-background = ${colors.background-alt}
+exec = ${HOME}/.scripts/polybar/now-playing/playing-zscroll.sh
+click-left = ~/.scripts/playerctl.sh togg && notify-send -u low -i ~/.icons/Sai-i3/Music.png "$(playerctl status)"
+scroll-up = ~/.scripts/playerctl.sh next
+scroll-down = ~/.scripts/playerctl.sh prev
+click-right = killall vlc
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/powermenu]
-type = custom/menu
-
-expand-right = true
-format-spacing = 1
-label-open = 
-label-open-padding = 1
-label-open-background = ${colors.power}
-label-open-foreground = ${colors.black}
-label-close = 
-label-close-foreground = ${colors.black}
-label-close-background = ${colors.power}
-label-close-padding = 1
-label-separator = |
-label-separator-foreground = ${colors.power}
-
-menu-0-0 =  reboot
-menu-0-0-exec = systemctl reboot
-menu-0-1 =  power off
-menu-0-1-exec = systemctl poweroff
-menu-0-0-underline = ${colors.power}
-menu-0-1-underline = ${colors.power}
+type = custom/text
+content = 
+;content" has the same properties as "format-NAME"
+content-background = ${colors.background-alt}
+content-foreground = ${colors.red}
+content-padding = 1
+click-left = ~/.config/rofi/powermenu.sh &
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -227,235 +151,144 @@ menu-0-1-underline = ${colors.power}
 type = custom/text
 content = 
 ;content" has the same properties as "format-NAME"
-content-background = ${colors.launcher}
-content-foreground = ${colors.black}
+content-background = ${colors.background-alt}
+content-foreground = ${colors.foreground}
 content-padding = 1
-;click-(left|middle|right)" will be executed using "/usr/bin/env sh -c $CO>
 click-left = ~/.config/polybar/scripts/launcher.sh &
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/xwindow]
-type = internal/xwindow
-format = <label>
-format-prefix = 
-format-prefix-background = ${colors.xwindow}
-format-prefix-foreground = ${colors.black}
-format-prefix-padding = 1
-
-label = %title:0:30:...%
-label-background = ${colors.foreground}
-label-foreground = ${colors.black}
-label-padding = 1
-label-empty = "Desktop"
-label-empty-background = ${colors.foreground}
-label-empty-foreground = ${colors.black}
-label-empty-padding = 1
+[module/space]
+type = custom/text
+content = "  "
+content-background = ${colors.background-alt}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 1
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+[module/memory]
+type = internal/memory
+interval = 7
+format = <label>
+format-prefix = "" 
+format-prefix-foreground = ${colors.yellow}
+label = " %percentage_used%%"
+format-background = ${colors.background-alt}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/filesystem]
 type = internal/fs
 interval = 25
-
 format-mounted = <label-mounted>
-format-mounted-prefix = "  "
-format-mounted-prefix-background = ${colors.date}
-format-mounted-prefix-foreground = ${colors.black}
-
+format-mounted-prefix = %{A1:thunar:}%{A}
+format-mounted-background = ${colors.background-alt}
+format-mounted-foreground = ${colors.blue}
 mount-0 = /
-
-label-mounted =  %mountpoint% : %percentage_used%%
-label-mounted-background = ${colors.foreground}
-label-mounted-foreground = ${colors.black}
-
-format-mounted-underline = ${colors.date}
-label-unmounted = %mountpoint% not mounted
-;label-unmounted-foreground = ${colors.foreground-alt}
-label-unmounted-background = ${colors.foreground}
-label-unmounted-foreground = ${colors.black}
+label-mounted = %percentage_used%%
+label-mounted-background = ${colors.background-alt}
+label-mounted-foreground = ${colors.foreground}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = 
-;
-format-prefix-background = ${colors.cpu}
-format-prefix-foreground = ${colors.black}
-format-prefix-padding = 1
-label = %percentage:2%%
-label-background = ${colors.foreground}
-label-foreground = ${colors.black}
-label-padding = 1
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = 
-format-prefix-background = ${colors.memory} 
-format-prefix-foreground = ${colors.black}
-format-prefix-padding = 1
-label = %percentage_used%%
-label-background = ${colors.foreground}
-label-foreground = ${colors.black}
-label-padding = 1
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-[module/date]
-type = internal/date
+[module/updates]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates.sh
+tail = true
 interval = 5
-
-time = " %I:%M %p"
-time-alt = " %a, %d %b %Y"
-
 format = <label>
-label-background = ${colors.foreground}
-label-foreground = ${colors.black}
-label-padding = 1
-format-prefix = 
-format-prefix-padding = 1
-format-prefix-foreground = ${colors.black}
-format-prefix-background = ${colors.date}
-label =%time%
+format-prefix = 
+format-prefix-foreground =  ${colors.teal}
+label = " %output%"
+click-left = exo-open --launch TerminalEmulator &
+click-right = exo-open --launch TerminalEmulator &
+format-foreground = ${colors.foreground}
+format-background = ${colors.background-alt}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-
 
 [module/uptime]
-type = custom/script 
-exec = uptime -p | cut -f 2- -d ' '
-interval = 100
-format = <label>
-format-prefix = 
-format-prefix-background = ${colors.uptime}
-format-prefix-foreground = ${colors.black}
-format-prefix-padding = 1
-label = %output%
-label-background = ${colors.foreground}
-label-foreground = ${colors.black}
-label-padding = 1
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-[module/previous]
-type = custom/text
-content = 倫
-content-padding = 1
-content-background = #d2de40
-content-foreground = ${colors.black}
-click-left = exec playerctl previous &
-tail =  true
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-[module/info]
 type = custom/script
-
-interval = 1
-exec = ~/.config/polybar/scripts/music
-
-format = <label>
-format-padding = 1
-format-background = #80000000
-
-label = %output%
-tail = true
-click-left = exec playerctl play-pause &
+interval = 30
+exec = uptime -p | cut -f 2- -d ' '
+format = "<label>"
+format-prefix = "免 "
+format-background = ${colors.background-alt}
+format-foreground = ${colors.foreground}
+format-prefix-foreground = ${colors.mauve}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/next]
+[module/gap]
 type = custom/text
-content = 淪
-content-padding = 1
-content-background = #d2de40
-content-foreground = ${colors.black}
-click-left = exec playerctl next
-tail = true
+content = "  "
+content-background = ${colors.background}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
+[module/title]
+type = internal/xwindow
+format = <label>
+format-background = ${colors.background-alt}
+format-foreground = ${colors.foreground}
+format-padding = 1
+label = %title%
+label-maxlen = 20
+label-minlen = 20
+label-empty = Desktop
+label-empty-foreground = ${colors.foreground}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-;; Apps
- 
+[module/r1]
+type = custom/text
+content = %{T4}%{T-}
+content-background = ${colors.background}
+content-foreground = ${colors.background-alt}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/l1]
+type = custom/text
+content = %{T4}%{T-}
+content-background = ${colors.background}
+content-foreground = ${colors.background-alt}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
 [module/term]
 type = custom/text
-content = "%{T3}%{T-}"
-;content-foreground = ;${color.black}
-;content-background = ;${color.black}
+content = %{T3} %{T-}
+content-background = ${colors.background-alt}
+content-foreground = ${colors.foreground}
 content-padding = 0
 click-left  = terminator &
 
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
 [module/web]
 type = custom/text
-content = "%{T3}%{T-}"
-;content-foreground = ${color.network}
-;content-background = ${color.bg}
+content = %{T3} %{T-}
+content-background = ${colors.background-alt}
+content-foreground = ${colors.red}
 content-padding = 0
 click-left  = firefox &
 
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
 [module/files]
 type = custom/text
-content = "%{T3}%{T-}"
-;content-foreground = ${color.blue}
-;content-background = ${color.bg}
+content = %{T3} %{T-}
+content-background = ${colors.background-alt}
+content-foreground = ${colors.blue}
 content-padding = 0
 click-left  = thunar &
 
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
 [module/edit]
 type = custom/text
-content = "%{T3}%{T-}"
-;content-foreground = ${color.gray}
-;content-background = ${color.bg}
-content-padding = 0
+content = %{T3} %{T-}
+content-background = ${colors.background-alt}
+content-foreground = ${colors.yellow}
+content-padding = 1
 click-left  = notepadqq &
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-;; _-_-_-Seperator-_-_-_-_-_-_-_-_-_-_-_
-
-
-[module/sep]
-type = custom/text
-content-foreground = ${colors.background}
-content-background = ${colors.background}
-content = " "
-
-
