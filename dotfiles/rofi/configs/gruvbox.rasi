@@ -1,0 +1,23 @@
+* {
+  accent:           #83a598;
+  background:       #282828;
+  background1:      #3c3836;
+  background2:      #504945;
+  background3:      #665c54;
+  background-light: #303030;
+  foreground:       #ebdbb2;
+  foreground1:      #a89984;
+  foreground2:      #bdae93;
+  foreground3:      #d5c4a1;
+  red:              #fb4934;
+  green:            #b8bb26;
+  yellow:           #fabd2f;
+  blue:             #83a598;
+  blue1:            #458588;
+  purple:           #d3869b;
+  teal:             #8ec07c;
+  orange:           #fe8019;
+  gray:             #a89984;
+  on:               #44ad4d;
+  off:              #fb4934;
+}
