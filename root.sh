@@ -23,7 +23,7 @@ dpkg -i lsd.deb
 apt update
 
 # Add base packages
-apt install xorg bashtop psmisc firefox Notepadqq unzip picom i3 polybar nitrogen rofi kitty terminator thunar neovim neofetch sxhkd lxpolkit lxappearance -y
+apt install xorg bashtop psmisc firefox notepadqq unzip picom i3 polybar nitrogen rofi kitty terminator thunar neovim neofetch sxhkd lxpolkit lxappearance -y
 apt install ttf-mscorefonts-installer papirus-icon-theme fonts-noto-color-emoji fonts-firacode fonts-font-awesome libqt5svg5 qml-module-qtquick-controls -y
 
 # Download Karitim-Dark-GTK Theme
