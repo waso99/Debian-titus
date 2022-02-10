@@ -341,6 +341,7 @@ exec compton -CfG -b
 exec gnome-do
 #exec redshift-gtk
 #exec yakuake
+exec --no-startup-id conky --config=/home/waso/.config/conky/.conkyrc
 
 bindsym $mod+Shift+Escape move scratchpad
 
