@@ -51,6 +51,10 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 bindsym $alt+F4 kill
 
+#Changing the Keyboard Layout
+exec "setxkbmap -layout us,ara"
+exec "setxkbmap -option 'grp:alt_shift_toggle'"
+
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
