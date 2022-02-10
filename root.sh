@@ -24,7 +24,7 @@ apt update
 
 # Add base packages
 apt install xorg bashtop psmisc firefox gedit unzip picom i3 polybar nitrogen rofi kitty terminator thunar neovim neofetch sxhkd lxpolkit lxappearance -y
-apt install ttf-mscorefonts-installer papirus-icon-theme fonts-noto-color-emoji fonts-firacode fonts-font-awesome libqt5svg5 qml-module-qtquick-controls bmon network-manager network-manager-gnome -y
+apt install conky-all ttf-mscorefonts-installer papirus-icon-theme fonts-noto-color-emoji fonts-firacode fonts-font-awesome libqt5svg5 qml-module-qtquick-controls bmon network-manager network-manager-gnome -y
 
 # Download Karitim-Dark-GTK Theme
 cd /usr/share/themes/
