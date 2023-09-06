@@ -29,7 +29,7 @@ apt install conky-all ttf-mscorefonts-installer papirus-icon-theme fonts-noto-co
 # Download Karitim-Dark-GTK Theme
 cd /usr/share/themes/
 #git clone https://github.com/EliverLara/Nordic.git
-git clone https://github.com/waso99/Karitim-Dark-GTK.git
+#git clone https://github.com/waso99/Karitim-Dark-GTK.git
 
 # Fira Code Nerd Font variant needed
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v1.1.0/FiraCode.zip
