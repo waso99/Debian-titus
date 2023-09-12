@@ -21,3 +21,7 @@ sudo su
  ```
  ./user.sh
  ```
+## Addiing user for share folders permissions (Virtual Box)
+ ```
+sudo adduser $USER vboxsf
+ ```
