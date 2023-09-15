@@ -25,3 +25,13 @@ sudo su
  ```
 sudo adduser $USER vboxsf
  ```
+
+## Installing VirtualBox Guest Additions:
+
+copy content to local hardisk (example: "VBoxGuest")
+```
+sudo -i
+chmod -R 777 VBoxGuest
+cd VBoxGuest
+./VBoxLinuxAdditions.run
+```
