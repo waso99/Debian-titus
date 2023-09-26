@@ -373,6 +373,9 @@ set $yw     #ccdc90
 set $gn     #88b090
 set $rd     #e89393
 
+
+# Compositor
+exec_always picom --experimental-backends --backend glx
 # set some nice colors      border     background  text
 client.focused              $ac        $ac         $tx
 client.unfocused            $bg        $bg         $ia
