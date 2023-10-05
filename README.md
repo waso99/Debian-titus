@@ -83,3 +83,13 @@ ALL ALL=(ALL) NOPASSWD: /opt/brightctl --dimmer
 bindsym XF86MonBrightnessUp exec /opt/brightctl --brighter
 bindsym XF86MonBrightnessDown exec /opt/brightctl --dimmer
 ```
+
+## Auto login with lightdm:
+1. Open the file:
+```sudo nano /etc/lightdm/lightdm.conf```
+2. remove the # tag from:
+```
+autologin-guest=false
+autologin-user=waso
+autologin-user-timeout=0
+```
