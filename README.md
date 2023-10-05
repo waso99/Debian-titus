@@ -39,7 +39,6 @@ cd VBoxGuest
 ## Increase/Decrease Brightness F-keys on Keyboard
 
 1- Run ```sudo nano /opt/brightctl``` and copy and paste in the following text:
-
 ```
 #!/bin/bash
 
@@ -74,8 +73,13 @@ echo $brightness > /sys/class/backlight/intel_backlight/brightness
 2- Make the script executable with ```sudo chmod +x /opt/brightctl```
 
 3- Run ```sudo nano /etc/sudoers``` and add the following two lines:
-
 ```
 ALL ALL=(ALL) NOPASSWD: /opt/brightctl --brighter
 ALL ALL=(ALL) NOPASSWD: /opt/brightctl --dimmer
+```
+
+4- add the following two lines to i3 config file:
+```
+bindsym XF86MonBrightnessUp exec /opt/brightctl --brighter
+bindsym XF86MonBrightnessDown exec /opt/brightctl --dimmer
 ```
