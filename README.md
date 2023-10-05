@@ -38,7 +38,7 @@ cd VBoxGuest
 
 ## Increase/Decrease Brightness F-keys on Keyboard
 
-Run ```sudo nano /opt/brightctl``` and copy and paste in the following text:
+1- Run ```sudo nano /opt/brightctl``` and copy and paste in the following text:
 
 ```
 #!/bin/bash
@@ -69,4 +69,13 @@ if test $brightness -gt $MAXIMUM ; then
 fi
 
 echo $brightness > /sys/class/backlight/intel_backlight/brightness
+```
+
+2- Make the script executable with ```sudo chmod +x /opt/brightctl```
+
+3- Run ```sudo nano /etc/sudoers``` and add the following two lines:
+
+```
+ALL ALL=(ALL) NOPASSWD: /opt/brightctl --brighter
+ALL ALL=(ALL) NOPASSWD: /opt/brightctl --dimmer
 ```
