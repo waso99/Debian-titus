@@ -1,6 +1,3 @@
-# Debian-titus
-Debian customizations from Chris Titus Tech
- 
 ## Requirements
 _This install changes Debian to the SID (Dev) Branch_
 
@@ -92,4 +89,17 @@ bindsym XF86MonBrightnessDown exec /opt/brightctl --dimmer
 autologin-guest=false
 autologin-user=waso
 autologin-user-timeout=0
+```
+## Install Zsh and oh my zsh
+1. Install zsh
+```
+ sudo apt install zsh -y
+```
+2. Set zsh as default
+```
+chsh -s $(which zsh)
+```
+3. Install oh my zsh
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
