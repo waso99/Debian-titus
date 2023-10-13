@@ -90,7 +90,7 @@ autologin-guest=false
 autologin-user=waso
 autologin-user-timeout=0
 ```
-## Install Zsh and oh my zsh
+## Install Zsh and oh my zsh and powerlevel10 theme
 1. Install zsh
 ```
  sudo apt install zsh -y
@@ -103,3 +103,8 @@ chsh -s $(which zsh)
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
+4. install powerlevel10k
+```
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
+5. Set ``` ZSH_THEME="powerlevel10k/powerlevel10k" ``` in ``` ~/.zshrc ```
