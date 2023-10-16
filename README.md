@@ -25,7 +25,7 @@ sudo adduser $USER vboxsf
 
 ## Installing VirtualBox Guest Additions:
 
-###method 1
+### **method 1**
 copy content to local hardisk (example: "VBoxGuest")
 ```
 sudo -i
@@ -33,7 +33,7 @@ chmod -R 777 VBoxGuest
 cd VBoxGuest
 ./VBoxLinuxAdditions.run
 ```
-###method 2
+### **method 2**
 1- Login as root: ```sudo -i```
 2- Update your APT database with: ```apt-get update```
 3- Install the latest security updates with: ```apt-get upgrade```
