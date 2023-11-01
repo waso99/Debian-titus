@@ -123,3 +123,14 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 ```
 sudo timedatectl set-timezone Asia/Riyadh
 ```
+
+## Install latest release of neovim
+```
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+```
+```
+chmod u+x nvim.appimage
+```
+```
+sudo mv nvim.appimage /usr/local/bin/nvim
+```
