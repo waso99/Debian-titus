@@ -134,3 +134,20 @@ chmod u+x nvim.appimage
 ```
 sudo mv nvim.appimage /usr/local/bin/nvim
 ```
+## fix (windows not showin in GRUB)
+install os-prober
+```
+sudo apt install os-prober
+```
+```
+sudo nano /etc/default/grub
+```
+then add or modify if exist
+```
+GRUB_DISABLE_OS_PROBER=false
+```
+```
+sudo update-grub
+```
+
+then reboot.
