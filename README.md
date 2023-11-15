@@ -151,3 +151,11 @@ sudo update-grub
 ```
 
 then reboot.
+
+## Install fonts
+
+Place the fonts in ~/.fonts then
+
+```
+fc-cache -fv
+```
