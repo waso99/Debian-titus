@@ -90,15 +90,24 @@ bindsym XF86MonBrightnessUp exec /opt/brightctl --brighter
 bindsym XF86MonBrightnessDown exec /opt/brightctl --dimmer
 ```
 
-## Auto login with lightdm:
-1. Open the file:
+## Auto login 
+### with lightdm:
 ```sudo nano /etc/lightdm/lightdm.conf```
-2. remove the # tag from:
+then remove the # tag from:
 ```
 autologin-guest=false
 autologin-user=waso
 autologin-user-timeout=0
 ```
+### with Gnome:
+```sudo nano /etc/gdm3/daemon.conf```
+then remove the # tag from:
+```
+[daemon]
+AutomaticLoginEnable=True
+AutomaticLogin=waso
+```
+
 ## Install Zsh and oh my zsh and powerlevel10 theme
 1. Install zsh
 ```
