@@ -78,13 +78,18 @@ echo $brightness > /sys/class/backlight/intel_backlight/brightness
 
 2- Make the script executable with ```sudo chmod +x /opt/brightctl```
 
-3- Run ```sudo nano /etc/sudoers``` and add the following two lines:
+3- add the following two lines to ``` /etc/sudoers```
 ```
 ALL ALL=(ALL) NOPASSWD: /opt/brightctl --brighter
 ALL ALL=(ALL) NOPASSWD: /opt/brightctl --dimmer
 ```
+4- add the following two lines to ``` /etc/udev/rules.d/backlight.rules```
 
-4- add the following two lines to i3 config file:
+```
+ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp video $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"
+```
+
+5- add the following two lines to i3 config file:
 ```
 bindsym XF86MonBrightnessUp exec /opt/brightctl --brighter
 bindsym XF86MonBrightnessDown exec /opt/brightctl --dimmer
