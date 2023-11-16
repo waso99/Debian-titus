@@ -92,8 +92,7 @@ bindsym XF86MonBrightnessDown exec /opt/brightctl --dimmer
 
 ## Auto login 
 ### with lightdm:
-```sudo nano /etc/lightdm/lightdm.conf```
-
+```sudo nano /etc/lightdm/lightdm.conf```<br>
 then remove the # tag from:
 ```
 autologin-guest=false
@@ -101,8 +100,7 @@ autologin-user=waso
 autologin-user-timeout=0
 ```
 ### with Gnome:
-```sudo nano /etc/gdm3/daemon.conf```
-
+```sudo nano /etc/gdm3/daemon.conf```<br>
 then remove the # tag from:
 ```
 [daemon]
