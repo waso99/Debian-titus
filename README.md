@@ -173,3 +173,12 @@ Place the fonts in ~/.fonts then
 ```
 fc-cache -fv
 ```
+## Connect wifi
+list wifi:
+```
+nmcli device wifi list
+```
+Connect to a Wi-Fi network: 
+```
+nmcli device wifi connect SSID_or_BSSID password password
+```
