@@ -1,6 +1,7 @@
 #!/bin/sh
 # Send a notification if the laptop battery is either low 
 # or is fully charged.
+########### add it as schedule to (crontab) :(*/5 * * * * /home/waso/.local/bin/batterynotify.sh)
 export DISPLAY=:0
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 # Battery percentage at which to notify
