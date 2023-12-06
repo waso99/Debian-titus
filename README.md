@@ -182,3 +182,9 @@ Connect to a Wi-Fi network:
 ```
 nmcli device wifi connect SSID_or_BSSID password password
 ```
+
+# Force kitty to use Gnome theme
+add to ktty.conf:
+```
+linux_display_server x11
+```
