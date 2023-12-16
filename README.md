@@ -179,3 +179,11 @@ nmcli device wifi connect SSID_or_BSSID password password
 ```
 find . -name '*.zip' -exec sh -c 'unzip -d "${1%.*}" "$1"' _ {} \;
 ```
+
+# Thunar "Open Terminal Here" opens kitty:
+creat file : ```~/.config/xfce4/helpers.rc```
+add:
+```
+TerminalEmulator=kitty
+TerminalEmulatorDismissed=true
+```
